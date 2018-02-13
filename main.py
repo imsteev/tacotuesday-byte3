@@ -14,28 +14,36 @@ import webapp2
 import logging
 import json
 import urllib
+import oauth2client
+import httplib2
+import requests 
 
 # this is used for constructing URLs to google's APIS
 from googleapiclient.discovery import build
+
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-
-# This API key is provided by google as described in the tutorial
+    
 API_KEY = 'XXxxXxXXXXxxNXXxXXXxxxNNXXxxxxxxxXXXxXX'
 
+# This API key is provided by google as described in the tutorial
+with open("config.json", "r") as f:
+	config_json = json.load(f)
+	API_KEY = config_json['api_key']
+					
 # This uses discovery to create an object that can talk to the 
 # fusion tables API using the developer key
 service = build('fusiontables', 'v1', developerKey=API_KEY)
 
 # This is the table id for the fusion table
-TABLE_ID = 'NxxxNXxXxxNxXXXXNXxXXXxXxxxNxXxNxXxxXxxX'
+TABLE_ID = "1eInGJ-8kleGckiZJ9lUw-uNfr6ZAc2H03KVysHpt"
 
 # This is the default columns for the query
 query_cols = []
-query_values = ['Forlan'] #Change to be the value(s) you're querying in the column you've specified
+query_values = [] #Change to be the value(s) you're querying in the column you've specified
 
 # Import the Flask Framework
 from flask import Flask, request
@@ -71,9 +79,8 @@ def make_query(cols, values, limit):
     string_values = string_values[2:len(string_values)]
     
     #Change this query to have your corresponding column (in our soccer example, the column for our WHERE is Scorer).
-    query = "SELECT " + string_cols + " FROM " + TABLE_ID + " WHERE Scorer = '" + string_values + "'"
-
-    query = query + " LIMIT " + str(limit)
+    query = "SELECT " + string_cols + " FROM " + TABLE_ID
+#    query = "SELECT * FROM " + TABLE_ID
 
     logging.info(query)
     # query = "SELECT * FROM " + TABLE_ID + " WHERE  Scorer = 'Forlan' LIMIT 5"
@@ -96,7 +103,7 @@ def update_table():
     logging.info(request.get_json())
     cols = request.json['cols']
     logging.info(cols)
-    result = get_all_data(make_query(cols, query_values, 100))
+    result = get_all_data(make_query(cols, query_values,None))
     logging.info(result)
     return json.dumps({'content' : result['rows'], 'headers' : result['columns']})
 
