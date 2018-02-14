@@ -16,7 +16,7 @@
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/explore.css" rel="stylesheet">
   </head>
 
   <body role="document">
@@ -55,16 +55,48 @@
     
       <div class="page-header">
 	<h2>Where did this data come from?</h2>
-	<p>This data came from a dataset found on Google Fusion Tables. You can check out the Fusion Tables <a href="https://www.google.com/fusiontables/DataSource?docid=1eInGJ-8kleGckiZJ9lUw-uNfr6ZAc2H03KVysHpt">here</a>.</p>
+	<p>This data came from a dataset found on Google Fusion Tables. You can check out the Fusion Tables <a href="https://www.google.com/fusiontables/DataSource?docid=1eInGJ-8kleGckiZJ9lUw-uNfr6ZAc2H03KVysHpt">here</a>.
+		The data 
+	</p>
       </div>
       
       <div class="page-header">
 	<h2>Who has access to it?</h2>
-	<p>I made the table public, so anyone can access this data. You can also find it on your own if you search on Fusion Tables.</p>
+	<p>The public has read access to the data, although write access belongs to the site that reported the data, which is a legal firm.</p>
       </div>
 
-
-    </div> <!-- /container -->
+	<div>
+		<div class="col-xs-2"></div>
+		
+		<ul class="col-xs-8 nav nav-pills center-block">
+		<li class="active">
+			<a href="#deaths" data-toggle="tab">Deaths</a>
+		</li>
+		<li>
+			<a href="#adult-victims" data-toggle="tab">Adult Victims</a>
+		</li>
+		<li>
+			<a href="#child-victims" data-toggle="tab">Child Victims</a>
+		</li>
+		<li>
+			<a href="#maimings" data-toggle="tab">Maimings</a>
+		</li>
+		<li>
+			<a href="#bodily-harm" data-toggle="tab">Bodily Harm</a>
+		</li>
+		</ul>
+		<div class="col-xs-2"></div>
+	</div>
+	<div class="plots">
+			<div class="tab-content">
+			<div class="tab-pane active" id="deaths"><img src="/images/Deaths.png" alt='deaths'></div>
+			<div class="tab-pane" id="adult-victims"><img src="/images/Adult Victims.png" alt='adult victims'></div>
+			<div class="tab-pane" id="child-victims"><img src="/images/Child Victims.png" alt='child victims'></div>
+			<div class="tab-pane" id="maimings"><img src="/images/Maimings.png" alt='maimings'></div>
+			<div class="tab-pane" id="bodily-harm"><img src="/images/Attacks Doing Bodily Harm.png" alt='attacks doing bodily harm'></div>	
+		</div>
+	</div>
+</div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
