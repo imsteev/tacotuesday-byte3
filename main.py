@@ -39,7 +39,7 @@ with open("config.json", "r") as f:
 service = build('fusiontables', 'v1', developerKey=API_KEY)
 
 # This is the table id for the fusion table
-TABLE_ID = "1eInGJ-8kleGckiZJ9lUw-uNfr6ZAc2H03KVysHpt"
+TABLE_ID = "1F491u3r71Js1FNn_QgGKOFIPcjOfa6C41Gyt32aa"
 
 # This is the default columns for the query
 query_cols = []
@@ -49,13 +49,7 @@ query_values = [] #Change to be the value(s) you're querying in the column you'v
 from flask import Flask, request
 app = Flask(__name__)
 
-def get_all_data(query):
-    #Example from the assignment instructions
-    #query = "SELECT * FROM " + TABLE_ID + " WHERE  Scorer = 'Forlan' LIMIT 2"
-    #response = service.query().sql(sql=query).execute()
-    #logging.info(response['columns'])
-    #logging.info(response['rows'])
-    
+def get_all_data(query): 
     response = service.query().sql(sql=query).execute()
     logging.info(response['columns'])
     logging.info(response['rows'])
@@ -117,6 +111,11 @@ def quality():
     template = JINJA_ENVIRONMENT.get_template('templates/quality.html')
     return template.render()
 
+@app.route('/narrative')
+def narrative():
+    template = JINJA_ENVIRONMENT.get_template('templates/narrative.html')
+    return template.render()
+    
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""

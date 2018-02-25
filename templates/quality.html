@@ -22,7 +22,7 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container" >
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -35,7 +35,9 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="about">About This Data Set</a></li>
-	    <li  class="active"><a href="quality">Data Quality</a></li>
+            
+	    <li class="active"><a href="quality" >Data Quality</a></li>
+	    <li><a href="narrative">Narrative</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -46,39 +48,39 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
 	<h1>Quality: About This Data Set</h1>
-        <p>The data set presented in this site is about dog bite injuries. The data was provided by a legal firm, and is a collection of 
-        injury statistics associated with breeds of dogs that span from 1982 to 2012. For the most part, the data is good quality, although there are
-        some missing datum.
+        <p>The data used in this byte is about WiFi connections that my iPhone has accessed in the past week or so. The data was collected via
+        the <a href='http://www.awareframework.com/introduction-of-aware-ios-client/'>AWARE client</a> downloaded via the App Store.
         </p>
       </div>
 
     
       <div class="page-header">
       <h2>Is the data complete?</h2>
-	<p> The data was not entirely complete. Some categories of injuries associated with a certain breed were missing or blank. This did not raise
-	much concern, as there were not many columns that had missing data. To account for this, I only plotted non-zero statistics for each breed of dog. After all,
-	there were also a number of breeds that had zero for an injury statistic, so this would cause plots to be even more skewed.
+	<p> After exporting and examining the data set from the WiFi table collected by AWARE, there were some entries that did not have an SSID and BSSID associated with it.
+	This is due to not being connected to WiFi at the time of collection. For the purpose of the visualization, I excluded these entries because I wanted to
+	visualize in particular the WiFi connections. Other than these missing entries, every column for entries associated with a WiFi connection had 
+	non-empty values.
 	</p>
       </div>
       
       <div class="page-header">
 	<h2>Is the data coherent?</h2>
 		<p>
-		The data is pretty coherent in my opinion. I am not an expert in animals, but the data does seem to match my expectations, in that there
-		would be breeds of dogs that seem to be more aggressive than others. This is evident in the fact that certain breeds, like the pitbull, have
-		more counts of attacks than others. Due to the fact that there are many breeds of dogs, it makes sense that this distribution is also skewed.
+		The data is pretty coherent. There were three main columns that I used: the SSID, which is a "human-readable" name of WiFi network, the BSSID, which is the MAC address of the
+		connected network, and the timestamp, which was the UNIX timestamp at which the network was connected to. For more information about the sensed fields, you can check out
+		the documentation <a href='http://www.awareframework.com/wi-fi/'>here</a>.
 		</p>
-		<p>In addition, before plotting, I had to clean up some data. As the data was stored via a JSON file instructed by
-		the assignment, all values were strings. Thus, I had to convert numerical strings to actual integers. Also, as mentioned before, I removed all rows with nonzero statistics.
-		Furthermore, there was a breed called "Total", which did not make sense for the purpose of plotting, so I removed that row as well before plotting.
-		</p>
+		<p>In terms of preprocessing the WiFi table, the only field that really needed any preprocessing was the timestamp, which I converted to a human-readable date format. The other
+		fields were simply the network names and MAC addresses, and are inherently logical.
       </div>
 
       <div class="page-header">
 		<h2>Is the data correct?</h2>
 		<p>
-		The data seems correct. I made a Google search to research common dog breeds that cause injuries, and the statistics found in my research generally match the data presented in this Byte.
-		You can read about it <a href="https://chicagoinjurycenter.com/common-breeds">here</a>.
+		To be using a third-party client to be collecting information from my phone, I can't be 100% sure that the data is correctly sensed and recorded. From what I can tell,
+		the AWARE client is pretty accurate. There were some entries that didn't make sense (being connected to multiple SSID's at once), so I excluded the 
+		overlapping entries at a specific point of time. Note that it does make sense to be connected to multiple BSSID's, because a network could have different access points.
+		Unexpectedly, there are many WiFi devices that connect to "CMU-SECURE", as compared to my room "tree o four", which only has a few access points.
 		</p>
 		
       </div>

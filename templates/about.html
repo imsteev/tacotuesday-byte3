@@ -37,6 +37,7 @@
             <li><a href="/">Home</a></li>
             <li  class="active"><a href="about">About This Data Set</a></li>
 	    <li><a href="quality">Data Quality</a></li>
+	    <li><a href="narrative">Narrative</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -47,60 +48,25 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
 	<h1>Accountability: About This Data Set</h1>
-        <p>The dataset used in this assignment explores statistics related to injuries caused by dogs.
-        	There are five categories: adult victims, child victims, maimings, deaths, and attacks resulting in bodily harm.
-        	Each set of these statistics are associated with a breed of dog. Note that there are purebred dogs, and mixed dogs.</a></p>
+        <p>The dataset used in this assignment is a collection of sensor data acquired via the AWARE client on my iPhone. In the past week, I installed
+        the AWARE app, and through my own configurations, I chose to include WiFi sensor collection. The data collected was done in the background,
+        and would upload data to my Google Cloud Platform MySQL instance every time my phone was connected to WiFi.</p>
       </div>
 
     
       <div class="page-header">
 	<h2>Where did this data come from?</h2>
-	<p>This data came from a dataset found on Google Fusion Tables. You can check out the Fusion Tables <a href="https://www.google.com/fusiontables/DataSource?docid=1eInGJ-8kleGckiZJ9lUw-uNfr6ZAc2H03KVysHpt">here</a>.
-		The original source is from a legal firm, which can be found <a href="http://www.westernmarylandlawyers.com/dog-bite-injury-data/">here</a>.
+	<p>The data came from my iPhone collecting data based on certain sensors. More specifically, I chose to use data collected about the WiFi
+	networks that my phone was connected to. This data was collected using the <a href='http://www.awareframework.com/introduction-of-aware-ios-client/'>AWARE client</a> installed
+	onto my phone via the App Store.
 	</p>
       </div>
       
       <div class="page-header">
 	<h2>Who has access to it?</h2>
-	<p>The public has read access to the data, however, write access belongs to the site that reported the data.</p>
+	<p>Only I have access to the raw data. I configured a MySQL instance to host the data pushed from my iPhone to my Google Cloud Platform project with a password-protected MySQL user.</p>
       </div>
-	<div>
-		<h1>Plots of Dog Bite Injury Data</h1>
-		<p>Click the tabs to see different plots of statistics. These plots are sorted in ascending order, and only take into consideration
-		nonzero stats for each breed</p>
-	</div>
-	<div class="row">
-		<div class="col-xs-2"></div>
-		<div class="col-xs-8">
-			<ul class="nav nav-pills">
-			<li class="active">
-				<a href="#deaths" data-toggle="tab">Deaths</a>
-			</li>
-			<li>
-				<a href="#adult-victims" data-toggle="tab">Adult Victims</a>
-			</li>
-			<li>
-				<a href="#child-victims" data-toggle="tab">Child Victims</a>
-			</li>
-			<li>
-				<a href="#maimings" data-toggle="tab">Maimings</a>
-			</li>
-			<li>
-				<a href="#bodily-harm" data-toggle="tab">Bodily Harm</a>
-			</li>
-			</ul>
-		</div>
-		<div class="col-xs-2"></div>
-	</div>
-	<div class="plots">
-			<div class="tab-content">
-			<div class="tab-pane active" id="deaths"><img src="/images/Deaths.png" alt='deaths'></div>
-			<div class="tab-pane" id="adult-victims"><img src="/images/Adult Victims.png" alt='adult victims'></div>
-			<div class="tab-pane" id="child-victims"><img src="/images/Child Victims.png" alt='child victims'></div>
-			<div class="tab-pane" id="maimings"><img src="/images/Maimings.png" alt='maimings'></div>
-			<div class="tab-pane" id="bodily-harm"><img src="/images/Attacks Doing Bodily Harm.png" alt='attacks doing bodily harm'></div>	
-		</div>
-	</div>
+
 </div> <!-- /container -->
 
 
